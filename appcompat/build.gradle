@@ -1,0 +1,93 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'maven-publish'
+    id 'signing'
+}
+
+android {
+    namespace 'com.koonny.appcompat'
+    compileSdk 33
+
+    defaultConfig {
+        minSdk 21
+        targetSdk 33
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    viewBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.0'
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
+}
+
+group = 'com.koonny.appcompat'
+version = '0.0.1.100-SNAPSHOT'
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            afterEvaluate {
+                artifact(tasks.getByName("bundleReleaseAar"))
+            }
+            artifactId = 'appcompat'
+            pom {
+                name = 'appcompat'
+                description = 'A android module'
+                url = 'https://github.com/jyygithub/koonny-appcompat'
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'jiangyy'
+                        name = 'JIANGYY'
+                        email = 'jiangyy@protonmail.com'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:git://github.com/jyygithub/koonny-appcompat.git'
+                    developerConnection = 'scm:git:ssh://github.com/jyygithub/koonny-appcompat.git'
+                    url = 'https://github.com/jyygithub/koonny-core'
+                }
+            }
+        }
+    }
+    repositories {
+        maven {
+            def releasesRepoUrl = 'https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/'
+            def snapshotsRepoUrl = 'https://s01.oss.sonatype.org/content/repositories/snapshots/'
+            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+            credentials {
+                username = ossrhUsername
+                password = ossrhPassword
+            }
+        }
+    }
+}
+
+signing {
+    sign publishing.publications.maven
+}

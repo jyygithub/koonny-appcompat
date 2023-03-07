@@ -8,12 +8,11 @@ import androidx.annotation.DrawableRes
 import androidx.core.view.indices
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
+import com.koonny.appcompat.module.PrepareModule
 import com.koonny.appcompat.module.StatusModule
 import com.koonny.appcompat.widget.StatusLayout
 
-abstract class BaseFragment<VB : ViewBinding>(
-    private val inflate: (LayoutInflater, ViewGroup?, Boolean) -> VB
-) : Fragment() {
+abstract class BaseFragment<VB : ViewBinding>(private val inflate: (LayoutInflater, ViewGroup?, Boolean) -> VB) : Fragment(), PrepareModule {
 
     private var _binding: VB? = null
     protected val binding get() = _binding!!
@@ -31,6 +30,22 @@ abstract class BaseFragment<VB : ViewBinding>(
         } else {
             binding.root
         }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        onPrepareData()
+        onPrepareValue()
+        onPrepareWidget()
+    }
+
+    override fun onPrepareValue() {
+    }
+
+    override fun onPrepareWidget() {
+    }
+
+    override fun onPrepareData() {
     }
 
     private fun insertStatusWithRoot(): View {

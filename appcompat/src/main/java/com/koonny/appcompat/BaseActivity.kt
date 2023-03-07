@@ -8,10 +8,11 @@ import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.indices
 import androidx.viewbinding.ViewBinding
+import com.koonny.appcompat.module.PrepareModule
 import com.koonny.appcompat.module.StatusModule
 import com.koonny.appcompat.widget.StatusLayout
 
-abstract class BaseActivity<VB : ViewBinding>(private val inflate: (LayoutInflater) -> VB) : AppCompatActivity() {
+abstract class BaseActivity<VB : ViewBinding>(private val inflate: (LayoutInflater) -> VB) : AppCompatActivity(), PrepareModule {
 
     protected lateinit var binding: VB
     private lateinit var statusLayout: StatusLayout
@@ -28,6 +29,18 @@ abstract class BaseActivity<VB : ViewBinding>(private val inflate: (LayoutInflat
         } else {
             setContentView(binding.root)
         }
+        onPrepareValue()
+        onPrepareWidget()
+        onPrepareData()
+    }
+
+    override fun onPrepareValue() {
+    }
+
+    override fun onPrepareWidget() {
+    }
+
+    override fun onPrepareData() {
     }
 
     private fun insertStatusWithRoot() {

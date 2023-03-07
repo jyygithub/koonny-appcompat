@@ -34,11 +34,12 @@ class StatusLayout : FrameLayout {
         addView(contentView, rootView.layoutParams)
     }
 
-    fun isFailure(text: String, @DrawableRes icon: Int) {
+    fun isFailure(text: String, @DrawableRes icon: Int, listener: OnClickListener) {
         removeAllViews()
         val view = LayoutInflater.from(context).inflate(R.layout.content_failure, this, false)
         view.findViewById<TextView>(R.id.tvMessage).text = text
         view.findViewById<ImageView>(R.id.iv).setImageResource(icon)
+        view.findViewById<TextView>(R.id.btnRetry).setOnClickListener(listener)
         addView(view)
     }
 

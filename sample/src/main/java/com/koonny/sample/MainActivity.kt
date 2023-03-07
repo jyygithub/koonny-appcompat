@@ -17,15 +17,18 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             startLoading("aaaa")
             delay(2000L)
             finishLoadingWithStatus(icon = R.mipmap.ic_launcher)
-            delay(2000L)
-            startLoading("bbb")
+        }
+    }
+
+    override fun onStatusRetry() {
+        lifecycleScope.launch {
             delay(2000L)
             finishLoading()
         }
     }
 
     override fun viewBindStatus(): View {
-        return binding.recyclerView
+        return binding.button
     }
 
 }

@@ -11,7 +11,8 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/holo_red_dark"
+        app:endText="End"
+        app:startText="Start"
         app:title="@string/app_name" />
 
     <androidx.appcompat.widget.AppCompatButton

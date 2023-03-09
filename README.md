@@ -55,13 +55,18 @@ class DoneDialog : BaseDialogFragment<DialogDoneBinding>(DialogDoneBinding::infl
 ### 点击事件
 
 ```kotlin
-button.click {
-    // 点击间隔3秒
-    // TODO
-}
-button.click(200) {
-    // 点击间隔200毫秒
-    // TODO
+class MainActivity {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        button.click {
+            // 点击间隔3秒
+            // TODO
+        }
+        button.click(200) {
+            // 点击间隔200毫秒
+            // TODO
+        }
+    }
 }
 ```
 
@@ -69,22 +74,62 @@ button.click(200) {
 
 ```kotlin
 // Date、String、Long的格式转换
+class MainActivity {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val nowMill = NOW_MILLS
+        val nowDate = NOW_DATE
+        val nowString = NOW_STRING
+        val result = NOW_MILLS.mills2date().date2mills().mills2string()
+    }
+}
 ```
 
 ### 版本号
 
 ```kotlin
-appVersionCode
-appVersionName
+class MainActivity {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val versionCode = appVersion.versionCode
+        val versionName = appVersion.versionName
+    }
+}
 ```
-
-### DateStore
 
 ### Intent封装
 
-
+```kotlin
+class FirstActivity {
+    fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        startActivity(
+            Intent(this,MainActivity::class.java).apply {
+                putExtra("result", "abc")
+            })
+    }
+}
+```
+```kotlin
+class MainActivity {
+    fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val result by intentString("result")
+    }
+}
+```
 
 ### 正则表达式
+
+```kotlin
+class MainActivity {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val result = "2132133".isPassword
+        val result1 = "sdasd".isPhoneNumber
+    }
+}
+```
 
 ### FlowEventBus
 

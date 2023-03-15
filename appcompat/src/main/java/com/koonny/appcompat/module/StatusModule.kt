@@ -4,5 +4,5 @@ import android.view.View
 
 interface StatusModule {
     fun viewBindStatus(): View
-    fun onStatusRetry()
+    fun onStatusRetry(exception: Exception)
 }

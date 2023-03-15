@@ -86,7 +86,16 @@ abstract class BaseFragment<VB : ViewBinding>(private val inflate: (LayoutInflat
     fun finishLoadingWithStatus(text: String = "数据加载失败", @DrawableRes icon: Int) {
         if (this is StatusModule) {
             statusLayout.isFailure(text, icon) {
-                onStatusRetry()
+                onStatusRetry(Exception(text))
+                startLoading()
+            }
+        }
+    }
+
+    fun finishLoadingWithStatus(exception: Exception, @DrawableRes icon: Int) {
+        if (this is StatusModule) {
+            statusLayout.isFailure(exception.message.orEmpty(), icon) {
+                onStatusRetry(exception)
                 startLoading()
             }
         }

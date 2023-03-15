@@ -41,7 +41,7 @@ dependencies {
 }
 
 group = 'com.koonny.appcompat'
-version = '0.0.1.200-SNAPSHOT'
+version = '0.0.1.300-SNAPSHOT'
 
 publishing {
     publications {

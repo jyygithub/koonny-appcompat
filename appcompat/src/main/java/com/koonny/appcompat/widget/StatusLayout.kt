@@ -34,8 +34,9 @@ class StatusLayout : FrameLayout {
     }
     private val mNonMessageView: TextView by lazy {
         TextView(context).apply {
+            gravity = Gravity.CENTER
             layoutParams = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT).apply {
-                setMargins(10, 10, 10, 10)
+                setMargins(20, 10, 20, 10)
             }
         }
     }

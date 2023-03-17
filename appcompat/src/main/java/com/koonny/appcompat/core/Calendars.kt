@@ -5,11 +5,10 @@ import java.util.*
 
 val NOW_MILLS = System.currentTimeMillis()
 val NOW_DATE = Date()
-val NOW_STRING = NOW_MILLS.mills2string()
+val NOW_STRING = NOW_MILLS.formatString()
 
-inline fun String.string2date(pattern: String = "yyyy-MM-dd HH:mm:ss") = SimpleDateFormat(pattern, Locale.getDefault()).parse(this)
-inline fun String.string2mills(pattern: String = "yyyy-MM-dd HH:mm:ss") = string2date(pattern).time
-inline fun Date.date2string(pattern: String = "yyyy-MM-dd HH:mm:ss") = SimpleDateFormat(pattern, Locale.getDefault()).format(this)
-inline fun Long.mills2string(pattern: String = "yyyy-MM-dd HH:mm:ss") = SimpleDateFormat(pattern, Locale.getDefault()).format(this)
-inline fun Date.date2mills() = this.time
-inline fun Long.mills2date() = Date(this)
+inline fun String.toDate(pattern: String = "yyyy-MM-dd HH:mm:ss") = SimpleDateFormat(pattern, Locale.getDefault()).parse(this)
+inline fun Long.toDate() = Date(this)
+inline fun String.toMillisecond(pattern: String = "yyyy-MM-dd HH:mm:ss") = toDate(pattern).time
+inline fun Date.formatString(pattern: String = "yyyy-MM-dd HH:mm:ss") = SimpleDateFormat(pattern, Locale.getDefault()).format(this)
+inline fun Long.formatString(pattern: String = "yyyy-MM-dd HH:mm:ss") = SimpleDateFormat(pattern, Locale.getDefault()).format(this)

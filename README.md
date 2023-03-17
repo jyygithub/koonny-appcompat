@@ -31,6 +31,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
 }
 ```
+
 ```kotlin
 class FirstFragment : BaseFragment<ActivityMainBinding>(ActivityMainBinding::inflate) {
 
@@ -41,6 +42,7 @@ class FirstFragment : BaseFragment<ActivityMainBinding>(ActivityMainBinding::inf
 
 }
 ```
+
 ```kotlin
 class DoneDialog : BaseDialogFragment<DialogDoneBinding>(DialogDoneBinding::inflate) {
 
@@ -48,7 +50,7 @@ class DoneDialog : BaseDialogFragment<DialogDoneBinding>(DialogDoneBinding::infl
         super.onViewCreated(view, savedInstanceState)
         // TODO
     }
-    
+
 }
 ```
 
@@ -80,7 +82,7 @@ class MainActivity {
         val nowMill = NOW_MILLS
         val nowDate = NOW_DATE
         val nowString = NOW_STRING
-        val result = NOW_MILLS.mills2date().date2mills().mills2string()
+        val result = NOW_MILLS.toDate().time.formatString("yyyy-MM-dd")
     }
 }
 ```
@@ -104,12 +106,13 @@ class FirstActivity {
     fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         startActivity(
-            Intent(this,MainActivity::class.java).apply {
+            Intent(this, MainActivity::class.java).apply {
                 putExtra("result", "abc")
             })
     }
 }
 ```
+
 ```kotlin
 class MainActivity {
     fun onCreate(savedInstanceState: Bundle?) {
@@ -136,6 +139,7 @@ class MainActivity {
 ```kotlin
 FlowEventBus.post("action1", "success")
 ```
+
 ```kotlin
 FlowEventBus.subscribe<String>("action1") {
     Log.d("event", it)

@@ -15,6 +15,7 @@ import com.koonny.appcompat.widget.StatusLayout
 abstract class BaseActivity<VB : ViewBinding>(private val inflate: (LayoutInflater) -> VB) : AppCompatActivity(), PrepareModule {
 
     protected lateinit var binding: VB
+        private set
     private lateinit var statusLayout: StatusLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -32,7 +32,7 @@ fun View.setRipple(@ColorInt color: Int, @Px radius: Int) {
     contentDrawable.color = ColorStateList.valueOf(color)
     contentDrawable.cornerRadius = radius + 0f
     val maskDrawable = GradientDrawable()
-    maskDrawable.color = ColorStateList.valueOf(color)
+    maskDrawable.color = ColorStateList.valueOf(Color.RED)
     maskDrawable.cornerRadius = radius + 0f
     val rippleDrawable = RippleDrawable(ColorStateList.valueOf(Color.parseColor("#cccccc")), contentDrawable, maskDrawable)
     ViewCompat.setBackground(this, rippleDrawable)
@@ -47,7 +47,7 @@ fun View.setRipple(@ColorInt color: Int, @Px topLeftRadius: Int, @Px topRightRad
     contentDrawable.color = ColorStateList.valueOf(color)
     contentDrawable.cornerRadii = cornerRadii
     val maskDrawable = GradientDrawable()
-    maskDrawable.color = ColorStateList.valueOf(color)
+    maskDrawable.color = ColorStateList.valueOf(Color.RED)
     maskDrawable.cornerRadii = cornerRadii
     val rippleDrawable = RippleDrawable(ColorStateList.valueOf(Color.parseColor("#cccccc")), contentDrawable, maskDrawable)
     ViewCompat.setBackground(this, rippleDrawable)

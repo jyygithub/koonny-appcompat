@@ -1,7 +1,6 @@
 package com.koonny.appcompat
 
 import android.os.Bundle
-import android.util.TypedValue
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -31,13 +30,11 @@ abstract class BaseDialogFragment<VB : ViewBinding>(private val inflate: (Layout
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = inflate.invoke(inflater, container, false)
-        val typedValue = TypedValue()
         return binding.root.apply {
-            context.theme.resolveAttribute(android.R.attr.colorBackground, typedValue, true)
             if (gravity == Gravity.BOTTOM) {
-                this.setGradientRes(typedValue.resourceId, 0, 0, R.dimen.dp_20, R.dimen.dp_20)
+                this.setGradientRes(R.color.colorBackground, 0, 0, R.dimen.dp_20, R.dimen.dp_20)
             } else {
-                this.setGradientRes(typedValue.resourceId, R.dimen.dp_20)
+                this.setGradientRes(R.color.colorBackground, R.dimen.dp_20)
             }
         }
     }

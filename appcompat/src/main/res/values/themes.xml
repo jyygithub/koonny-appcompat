@@ -10,9 +10,9 @@
         <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowAnimationStyle">@null</item>
-        <item name="android:colorBackground">#F8F8F8</item>
     </style>
 
+    <color name="colorBackground">#F8F8F8</color>
     <dimen name="dp_20">20dp</dimen>
 
 </resources>

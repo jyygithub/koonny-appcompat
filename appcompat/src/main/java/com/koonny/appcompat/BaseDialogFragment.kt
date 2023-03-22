@@ -20,8 +20,8 @@ abstract class BaseDialogFragment<VB : ViewBinding>(private val inflate: (Layout
     protected open var gravity: Int = Gravity.BOTTOM
     protected open val width: Int = 100
     protected open val height: Int = 0
-    protected open val dismissOnTouchOutside: Boolean = false
-    protected open val dismissOnBackPressed: Boolean = false
+    protected open val dismissOnTouchOutside: Boolean = true
+    protected open val dismissOnBackPressed: Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

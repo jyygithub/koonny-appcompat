@@ -32,7 +32,7 @@ abstract class BaseDialogFragment<VB : ViewBinding>(private val inflate: (Layout
         _binding = inflate.invoke(inflater, container, false)
         return binding.root.apply {
             if (gravity == Gravity.BOTTOM) {
-                this.setGradientRes(R.color.colorBackground, 0, 0, R.dimen.dp_20, R.dimen.dp_20)
+                this.setGradientRes(R.color.colorBackground, R.dimen.dp_20, R.dimen.dp_20, 0, 0)
             } else {
                 this.setGradientRes(R.color.colorBackground, R.dimen.dp_20)
             }

@@ -100,11 +100,11 @@ class Toolbar : ViewGroup {
         }
         mStartImageView?.setImageDrawable(startIcon)
         mStartImageView?.setOnClickListener {
-            (context as Activity?)?.onBackPressed()
+            (context as Activity?)?.finish()
         }
         mStartTextView?.text = startText
         mStartTextView?.setOnClickListener {
-            (context as Activity?)?.onBackPressed()
+            (context as Activity?)?.finish()
         }
     }
 

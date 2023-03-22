@@ -18,6 +18,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             delay(2000L)
             finishLoadingWithStatus(icon = R.mipmap.ic_launcher)
         }
+
+        MyDailog().show(supportFragmentManager)
+
     }
 
     override fun onStatusRetry(exception: Exception) {

@@ -27,30 +27,36 @@ fun View.setGradientRes(@ColorRes color: Int, @DimenRes radius: Int) {
 }
 
 fun View.setGradient(@ColorInt color: Int, @Px topLeftRadius: Int, @Px topRightRadius: Int, @Px bottomLeftRadius: Int, @Px bottomRightRadius: Int) {
-    val cornerRadii = floatArrayOf(
+    val array = floatArrayOf(
         topLeftRadius + 0f, topLeftRadius + 0f, topRightRadius + 0f, topRightRadius + 0f,
         bottomRightRadius + 0f, bottomRightRadius + 0f, bottomLeftRadius + 0f, bottomLeftRadius + 0f,
     )
     val drawable = GradientDrawable()
     drawable.color = ColorStateList.valueOf(color)
-    drawable.cornerRadii = cornerRadii
+    drawable.cornerRadii = array
     ViewCompat.setBackground(this, drawable)
 }
 
-fun View.setGradientRes(@ColorRes color: Int, @DimenRes topLeftRadius: Int, @DimenRes topRightRadius: Int, @DimenRes bottomLeftRadius: Int, @DimenRes bottomRightRadius: Int) {
-    val cornerRadii = floatArrayOf(
-        resources.getDimension(topLeftRadius),
-        resources.getDimension(topLeftRadius),
-        resources.getDimension(topRightRadius),
-        resources.getDimension(topRightRadius),
-        resources.getDimension(bottomLeftRadius),
-        resources.getDimension(bottomLeftRadius),
-        resources.getDimension(bottomRightRadius),
-        resources.getDimension(bottomRightRadius),
+fun View.setGradientRes(
+    @ColorRes color: Int,
+    @DimenRes topLeftRadius: Int,
+    @DimenRes topRightRadius: Int,
+    @DimenRes bottomLeftRadius: Int,
+    @DimenRes bottomRightRadius: Int
+) {
+    val array = floatArrayOf(
+        if (topLeftRadius == 0) 0f else resources.getDimension(topLeftRadius),
+        if (topLeftRadius == 0) 0f else resources.getDimension(topLeftRadius),
+        if (topRightRadius == 0) 0f else resources.getDimension(topRightRadius),
+        if (topRightRadius == 0) 0f else resources.getDimension(topRightRadius),
+        if (bottomLeftRadius == 0) 0f else resources.getDimension(bottomLeftRadius),
+        if (bottomLeftRadius == 0) 0f else resources.getDimension(bottomLeftRadius),
+        if (bottomRightRadius == 0) 0f else resources.getDimension(bottomRightRadius),
+        if (bottomRightRadius == 0) 0f else resources.getDimension(bottomRightRadius),
     )
     val drawable = GradientDrawable()
     drawable.color = ContextCompat.getColorStateList(context, color)
-    drawable.cornerRadii = cornerRadii
+    drawable.cornerRadii = array
     ViewCompat.setBackground(this, drawable)
 }
 
@@ -77,16 +83,16 @@ fun View.setRippleRes(@ColorRes color: Int, @DimenRes radius: Int) {
 }
 
 fun View.setRipple(@ColorInt color: Int, @Px topLeftRadius: Int, @Px topRightRadius: Int, @Px bottomLeftRadius: Int, @Px bottomRightRadius: Int) {
-    val cornerRadii = floatArrayOf(
+    val array = floatArrayOf(
         topLeftRadius + 0f, topLeftRadius + 0f, topRightRadius + 0f, topRightRadius + 0f,
         bottomRightRadius + 0f, bottomRightRadius + 0f, bottomLeftRadius + 0f, bottomLeftRadius + 0f,
     )
     val contentDrawable = GradientDrawable()
     contentDrawable.color = ColorStateList.valueOf(color)
-    contentDrawable.cornerRadii = cornerRadii
+    contentDrawable.cornerRadii = array
     val maskDrawable = GradientDrawable()
     maskDrawable.color = ColorStateList.valueOf(Color.RED)
-    maskDrawable.cornerRadii = cornerRadii
+    maskDrawable.cornerRadii = array
     val rippleDrawable = RippleDrawable(ColorStateList.valueOf(Color.parseColor("#cccccc")), contentDrawable, maskDrawable)
     ViewCompat.setBackground(this, rippleDrawable)
 }
@@ -98,22 +104,22 @@ fun View.setRippleRes(
     @DimenRes bottomLeftRadius: Int,
     @DimenRes bottomRightRadius: Int
 ) {
-    val cornerRadii = floatArrayOf(
-        resources.getDimension(topLeftRadius),
-        resources.getDimension(topLeftRadius),
-        resources.getDimension(topRightRadius),
-        resources.getDimension(topRightRadius),
-        resources.getDimension(bottomLeftRadius),
-        resources.getDimension(bottomLeftRadius),
-        resources.getDimension(bottomRightRadius),
-        resources.getDimension(bottomRightRadius),
+    val array = floatArrayOf(
+        if (topLeftRadius == 0) 0f else resources.getDimension(topLeftRadius),
+        if (topLeftRadius == 0) 0f else resources.getDimension(topLeftRadius),
+        if (topRightRadius == 0) 0f else resources.getDimension(topRightRadius),
+        if (topRightRadius == 0) 0f else resources.getDimension(topRightRadius),
+        if (bottomLeftRadius == 0) 0f else resources.getDimension(bottomLeftRadius),
+        if (bottomLeftRadius == 0) 0f else resources.getDimension(bottomLeftRadius),
+        if (bottomRightRadius == 0) 0f else resources.getDimension(bottomRightRadius),
+        if (bottomRightRadius == 0) 0f else resources.getDimension(bottomRightRadius),
     )
     val contentDrawable = GradientDrawable()
     contentDrawable.color = ContextCompat.getColorStateList(context, color)
-    contentDrawable.cornerRadii = cornerRadii
+    contentDrawable.cornerRadii = array
     val maskDrawable = GradientDrawable()
     maskDrawable.color = ColorStateList.valueOf(Color.BLACK)
-    maskDrawable.cornerRadii = cornerRadii
+    maskDrawable.cornerRadii = array
     val rippleDrawable = RippleDrawable(ColorStateList.valueOf(Color.parseColor("#cccccc")), contentDrawable, maskDrawable)
     ViewCompat.setBackground(this, rippleDrawable)
 }

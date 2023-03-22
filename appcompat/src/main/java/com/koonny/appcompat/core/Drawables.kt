@@ -22,7 +22,7 @@ fun View.setGradient(@ColorInt color: Int, @Px radius: Int) {
 fun View.setGradientRes(@ColorRes color: Int, @DimenRes radius: Int) {
     val drawable = GradientDrawable()
     drawable.color = ContextCompat.getColorStateList(context, color)
-    drawable.cornerRadius = resources.getDimension(radius)
+    drawable.cornerRadius = if (radius == 0) 0f else resources.getDimension(radius)
     ViewCompat.setBackground(this, drawable)
 }
 
@@ -74,10 +74,10 @@ fun View.setRipple(@ColorInt color: Int, @Px radius: Int) {
 fun View.setRippleRes(@ColorRes color: Int, @DimenRes radius: Int) {
     val contentDrawable = GradientDrawable()
     contentDrawable.color = ContextCompat.getColorStateList(context, color)
-    contentDrawable.cornerRadius = resources.getDimension(radius)
+    contentDrawable.cornerRadius = if (radius == 0) 0f else resources.getDimension(radius)
     val maskDrawable = GradientDrawable()
     maskDrawable.color = ColorStateList.valueOf(Color.BLACK)
-    maskDrawable.cornerRadius = resources.getDimension(radius)
+    maskDrawable.cornerRadius = if (radius == 0) 0f else resources.getDimension(radius)
     val rippleDrawable = RippleDrawable(ColorStateList.valueOf(Color.parseColor("#cccccc")), contentDrawable, maskDrawable)
     ViewCompat.setBackground(this, rippleDrawable)
 }

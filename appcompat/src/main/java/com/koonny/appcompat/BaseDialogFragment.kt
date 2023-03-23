@@ -17,7 +17,7 @@ abstract class BaseDialogFragment<VB : ViewBinding>(private val inflate: (Layout
     private var _binding: VB? = null
     protected val binding: VB get() = _binding!!
 
-    protected open var gravity: Int = Gravity.BOTTOM
+    protected open val gravity: Int = Gravity.BOTTOM
     protected open val width: Int = 100
     protected open val height: Int = 0
     protected open val dismissOnTouchOutside: Boolean = true

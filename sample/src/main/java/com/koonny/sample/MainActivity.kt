@@ -23,7 +23,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
     }
 
-    override fun onStatusRetry(exception: Exception) {
+    override fun onStatusRetry(exception: Exception?) {
         lifecycleScope.launch {
             delay(2000L)
             finishLoading()

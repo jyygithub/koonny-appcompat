@@ -110,6 +110,14 @@ public inline fun <T : Parcelable> Fragment.intentArrayList(key: String): Lazy<A
     return IntentLazy { requireActivity().intent.getParcelableArrayListExtra(key) }
 }
 
+public inline fun ComponentActivity.intentStringArray(key: String): Lazy<Array<String>?> {
+    return IntentLazy { intent.getStringArrayExtra(key) }
+}
+
+public inline fun Fragment.intentStringArray(key: String): Lazy<Array<String>?> {
+    return IntentLazy { requireActivity().intent.getStringArrayExtra(key) }
+}
+
 // ===
 
 public inline fun Fragment.argumentsString(key: String): Lazy<String?> {

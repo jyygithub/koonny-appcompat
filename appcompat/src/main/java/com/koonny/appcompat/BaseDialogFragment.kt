@@ -23,11 +23,6 @@ abstract class BaseDialogFragment<VB : ViewBinding>(private val inflate: (Layout
     protected open val dismissOnTouchOutside: Boolean = true
     protected open val dismissOnBackPressed: Boolean = true
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setStyle(STYLE_NO_TITLE, R.style.Theme_Koonny_Dialog)
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = inflate.invoke(inflater, container, false)
         return binding.root.apply {

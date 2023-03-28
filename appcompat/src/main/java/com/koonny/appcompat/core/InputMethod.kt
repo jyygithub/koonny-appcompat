@@ -1,4 +1,4 @@
-package com.koonny.appcompat
+package com.koonny.appcompat.core
 
 import android.app.Activity
 import android.content.Context

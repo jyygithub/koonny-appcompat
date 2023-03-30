@@ -5,6 +5,7 @@ abstract class FastClickListener(private var millisecond: Long) : android.view.V
     override fun onClick(v: android.view.View) {
         val currentTime = System.currentTimeMillis()
         if (currentTime - mLastClickTime > millisecond) {
+            v.hideSoftInput()
             onClick()
             mLastClickTime = System.currentTimeMillis()
         }

@@ -17,7 +17,7 @@ fun Activity.showSoftInput(): Boolean {
 }
 
 fun View.hideSoftInput(): Boolean {
-    return context.inputMethodManager.hideSoftInputFromWindow(windowToken, InputMethodManager.HIDE_IMPLICIT_ONLY)
+    return context.inputMethodManager.hideSoftInputFromWindow(windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
 }
 
 fun Activity.hideSoftInput(): Boolean {

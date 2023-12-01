@@ -36,12 +36,13 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.6.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
 }
 
 group = 'com.koonny.appcompat'
-version = '1.0.16-SNAPSHOT'
+artifactId = 'appcompat'
+version = '1.0.17-SNAPSHOT'
 
 publishing {
     publications {
@@ -49,7 +50,6 @@ publishing {
             afterEvaluate {
                 artifact(tasks.getByName("bundleReleaseAar"))
             }
-            artifactId = 'appcompat'
             pom {
                 name = 'appcompat'
                 description = 'A android module'

@@ -7,11 +7,11 @@ plugins {
 
 android {
     namespace 'com.koonny.appcompat'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         minSdk 21
-        targetSdk 33
+        targetSdk 34
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -41,7 +41,6 @@ dependencies {
 }
 
 group = 'com.koonny.appcompat'
-artifactId = 'appcompat'
 version = '1.0.17-SNAPSHOT'
 
 publishing {
@@ -50,6 +49,7 @@ publishing {
             afterEvaluate {
                 artifact(tasks.getByName("bundleReleaseAar"))
             }
+            artifactId = 'appcompat'
             pom {
                 name = 'appcompat'
                 description = 'A android module'
